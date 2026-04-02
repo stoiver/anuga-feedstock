@@ -41,15 +41,13 @@ requirements:
     - meshpy >=2022.1
     - netcdf4 >=1.6
     - scipy >=1.11
-    - utm
+    - pyproj >=3.6
     - xarray
     - libgomp  # [linux]
 
   run_constrained:
     - mpi4py
     - pymetis >=2023.1
-    - pyproj >=3.6
-    - affine >=2.4
     - rasterio
     - fiona
     - shapely
