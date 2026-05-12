@@ -1,6 +1,6 @@
 {% set name = "anuga" %}
-{% set version = "3.3.2" %}
-{% set sha = "8defca4834c488604fb56404c4dcfa3a74279f8f7f8c69a6ffbfe9e06143c926" %}
+{% set version = "3.3.6" %}
+{% set sha = "0e5861f3edebbbbb000e2fd7265e02b84334f6feddc36529ac2881fc707773ff" %}
 
 package:
   name: {{ name|lower }}
@@ -36,19 +36,19 @@ requirements:
   run:
     - python
     - {{ pin_compatible('numpy') }}
+    - utm
+    - pyproj >=3.6
     - dill >=0.3.7
     - matplotlib-base >=3.7
     - meshpy >=2022.1
     - netcdf4 >=1.6
     - scipy >=1.11
-    - utm
     - xarray
     - libgomp  # [linux]
 
   run_constrained:
     - mpi4py
     - pymetis >=2023.1
-    - pyproj >=3.6
     - affine >=2.4
     - rasterio
     - fiona
