@@ -36,6 +36,7 @@ requirements:
   run:
     - python
     - {{ pin_compatible('numpy') }}
+    - utm
     - pyproj >=3.6
     - dill >=0.3.7
     - matplotlib-base >=3.7
