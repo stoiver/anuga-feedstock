@@ -11,12 +11,23 @@ source:
   sha256: {{ sha }}
 
 build:
-  script: {{ PYTHON }} -m pip install . --no-build-isolation -vv
   number: 0
   skip: true  # [py<3.10]
+  script:
+    # Parse MESON_ARGS so meson finds the right executables when cross-compiling.
+    - $PYTHON -m build -w -n -x -Csetup-args=${MESON_ARGS// / -Csetup-args=}   # [unix]
+    - $PYTHON -m pip install dist/anuga*.whl                                    # [unix]
+    - {{ PYTHON }} -m pip install . --no-build-isolation -vv                    # [win]
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
+    - pybind11                               # [build_platform != target_platform]
+    - ninja                                  # [build_platform != target_platform]
+    - meson-python                           # [build_platform != target_platform]
     - {{ compiler('c') }}    # [not win]
     - {{ compiler('cxx') }}  # [not win]
     - {{ stdlib("c") }}      # [not win]
@@ -26,6 +37,7 @@ requirements:
   host:
     - python
     - pip
+    - python-build
     - cython
     - meson-python
     - ninja
