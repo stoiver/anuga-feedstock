@@ -29,7 +29,7 @@ requirements:
     - cython
     - meson-python
     - ninja
-    - numpy >=2.0.0
+    - numpy
     - pybind11
     - libpython  # [win]
 
