@@ -12,7 +12,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . --no-build-isolation -vv
-  number: 0
+  number: 1
   skip: true  # [py<3.10]
 
 requirements:
@@ -29,7 +29,7 @@ requirements:
     - cython
     - meson-python
     - ninja
-    - numpy >=2.0.0
+    - numpy
     - pybind11
     - libpython  # [win]
 
