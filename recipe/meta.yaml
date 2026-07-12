@@ -1,6 +1,6 @@
 {% set name = "anuga" %}
-{% set version = "3.3.7" %}
-{% set sha = "c63577b6d8f3610972b24369d201b3398de77e491c631f91938efcf1d4acc63d" %}
+{% set version = "3.3.8" %}
+{% set sha = "c3b2b50f83bee0d4ec96524b444e2083a25edebd50658fb49d0df53ad18bdaf0" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . --no-build-isolation -vv
-  number: 1
+  number: 0
   skip: true  # [py<3.10]
 
 requirements:
@@ -37,6 +37,7 @@ requirements:
     - python
     - {{ pin_compatible('numpy') }}
     - utm
+    - pymetis >=2023.1
     - pyproj >=3.6
     - dill >=0.3.7
     - matplotlib-base >=3.7
@@ -48,7 +49,6 @@ requirements:
 
   run_constrained:
     - mpi4py
-    - pymetis >=2023.1
     - affine >=2.4
     - rasterio
     - fiona
